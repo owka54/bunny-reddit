@@ -39,15 +39,45 @@ header div h1 {
   }
 }
 
-.about {
+.right-side-container {
+  display: flex;
+  flex-direction:column;
+  float: right;
+}
+
+#theme-selector {
+  float: right;
   margin-top: 3rem;
   margin-right: 2rem;
-  padding: 2em;
-  float: right;
-  border: 1px solid white;
-  border-radius: 5rem;
+  padding: 0.5em;
+  border: 1px solid blueviolet;
+  border-radius: 2rem;
+  text-align: center;
 }
-.about h2, .about h4 {
+#theme-selector button {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+#theme-selector #blueviolet {
+  color: blueviolet;
+}
+#theme-selector #cornflowerblue {
+  color: cornflowerblue;
+}
+#theme-selector #crimson {
+  color: crimson;
+}
+
+#about {
+  float: right;
+  margin-top: 3rem;
+  margin-right: 2rem;
+  padding: 1em;
+  border: 1px solid blueviolet;
+  border-radius: 3rem;
+}
+#about h2, #about h4 {
   text-align: center;
 }
 
