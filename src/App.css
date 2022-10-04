@@ -7,45 +7,44 @@
   /* text-align: center; */
 }
 
-header {
-  background-color:blueviolet;
+/* Header and logo */
+.header {
   margin: 0;
   padding: 1rem;
   height: 5rem;
   width: 100%;
   vertical-align: middle;
+  flex-direction: row;
+  margin-bottom: 2rem;
 }
-
-header div img {
+.header h1 {
+  line-height: 2rem;
+  width: 50%;
+}
+#logo {
   float: left;
   padding: 0.25rem 1rem 0 2rem;
 }
-header div h1 {
-  line-height: 2rem;
+#search {
+  float: right;
+  padding: 0.75rem;
+  margin-right: 3rem;
+  margin-bottom: 0;
+  top: 137%;
+  transform: translateY(-137%);
+  width: 20rem;
+  border-radius: 1rem;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+/* End header and logo */
 
 .right-side-container {
   display: flex;
   flex-direction:column;
   float: right;
+  max-width: 25rem;
 }
 
-#theme-selector {
+.theme-selector {
   float: right;
   margin-top: 3rem;
   margin-right: 2rem;
@@ -54,22 +53,22 @@ header div h1 {
   border-radius: 2rem;
   text-align: center;
 }
-#theme-selector button {
+.theme-selector button {
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 1rem;
 }
-#theme-selector #blueviolet {
+.theme-selector #blueviolet {
   color: blueviolet;
 }
-#theme-selector #cornflowerblue {
+.theme-selector #cornflowerblue {
   color: cornflowerblue;
 }
-#theme-selector #crimson {
+.theme-selector #crimson {
   color: crimson;
 }
 
-#about {
+.about {
   float: right;
   margin-top: 3rem;
   margin-right: 2rem;
@@ -77,7 +76,9 @@ header div h1 {
   border: 1px solid blueviolet;
   border-radius: 3rem;
 }
-#about h2, #about h4 {
+.about h2 {
+  text-decoration: underline;
+}
+.about h2, .about h4 {
   text-align: center;
 }
-
