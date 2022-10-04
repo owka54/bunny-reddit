@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { selectTheme } from './features/colorChange/colorChangeSlice'
 import About from './components/about'
+import Rules from './components/rules'
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
 
           <div className="about" style={{borderColor: themeColor}}>
             <About />
+          </div>
+
+          <div className='rules'>
+            <Rules />
           </div>
         </div>
       </div>

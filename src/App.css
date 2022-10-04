@@ -69,6 +69,8 @@
 }
 /* End header */
 
+/* Right side  */
+
 .right-side-container {
   display: flex;
   flex-direction:column;
@@ -100,7 +102,7 @@
   color: crimson;
 }
 
-.about {
+.about, .rules {
   float: right;
   margin-top: 3rem;
   margin-right: 2rem;
@@ -114,3 +116,11 @@
 .about h2, .about h4 {
   text-align: center;
 }
+
+.rules h2 {
+  text-decoration: underline;
+  text-align: center;
+  color: crimson;
+}
+
+/* End right side */
