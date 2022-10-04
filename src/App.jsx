@@ -14,6 +14,7 @@ function App() {
     <Router>
       <div className="App" style={{backgroundColor: themeColor}}>
         <Header />
+        
 
         <div className='right-side-container'>
 

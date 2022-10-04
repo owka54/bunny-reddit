@@ -7,35 +7,67 @@
   /* text-align: center; */
 }
 
-/* Header and logo */
+/* Header */
 .header {
   margin: 0;
   padding: 1rem;
   height: 5rem;
   width: 100%;
   vertical-align: middle;
-  flex-direction: row;
+  display: flex;
   margin-bottom: 2rem;
+  justify-content: space-between;
 }
-.header h1 {
-  line-height: 2rem;
-  width: 50%;
+.header div {
+  display: inline-flex;
+  text-align: center;
 }
 #logo {
-  float: left;
+  display: inline;
   padding: 0.25rem 1rem 0 2rem;
+  justify-content: flex-start;
+  height: 100%;
 }
-#search {
-  float: right;
-  padding: 0.75rem;
+.header h1 {
+  display: inline;
+  align-self: center;
+  margin: 0;
+  font-size: 3rem;
+}
+.filters {
+  align-self: center;
+}
+.filters ul {
+  list-style-type: none;
+  text-align: center;
+  /* bottom: 48%;
+  transform: translateY(48%); */
+}
+.filters ul li {
+  display: inline;
+  padding: 1rem;
+}
+.filters ul a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.searchbar {
+  display: inline-flex;
+  justify-content: flex-end;
+  padding: 1rem;
   margin-right: 3rem;
   margin-bottom: 0;
-  top: 137%;
-  transform: translateY(-137%);
-  width: 20rem;
   border-radius: 1rem;
 }
-/* End header and logo */
+.searchbar input {
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 20rem;
+}
+/* End header */
 
 .right-side-container {
   display: flex;

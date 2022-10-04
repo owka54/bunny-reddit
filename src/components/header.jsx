@@ -1,12 +1,20 @@
 import rabbitLogo from '../assets/rabbit.png'
+import Filters from '../features/filters/filters'
+import SearchBar from '../features/searchBar/searchBar'
 
 export default function Header() {
     return (
         <header className='header'>
-            <img id='logo' src={rabbitLogo} alt="Rabbit logo" />
-            <h1>BunnyReddit</h1>
+            <div>
+                <img id='logo' src={rabbitLogo} alt="Rabbit logo" />
+                <h1>BunnyReddit</h1>
+            </div>
+            
 
-            <input id='search' placeholder='Search' />
+            <Filters />
+
+            <SearchBar />
+
         </header>
     )
 }
