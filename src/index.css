@@ -95,3 +95,21 @@ body {
     background-color: #ffffff;
   }
 }
+
+@media only screen and (max-width: 1640px) {
+  .articles {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .articles {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1035px) {
+  .articles {
+    width: 50%;
+  }
+}
