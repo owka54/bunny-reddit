@@ -1,39 +1,58 @@
 import './App.css'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 import Header from './components/header'
+import RightSide from './components/rightSide'
 import ColorChange from './features/colorChange/colorChange'
-import { BrowserRouter as Router } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectTheme } from './features/colorChange/colorChangeSlice'
 import About from './components/about'
 import Rules from './components/rules'
+import Layout from './components/layout'
+
+import Article from './components/Article'
 
 
 function App() {
-  const themeColor = useSelector(selectTheme)
+  const dispatch = useDispatch()
+
+  const [articles, setArticles] = useState();
+  const [subreddit, setSubreddit] = useState('rabbits');
+
+  useEffect(() => {
+    fetch('https://www.reddit.com/r/rabbits.json').then(res => {
+      if (res.status != 200) {
+        console.log('ERROR');
+        return;
+      }
+
+      res.json().then(data => {
+        if (data != null) {
+          setArticles(data.data.children);
+        }
+      })
+
+    })
+  }, [subreddit])
 
   return (
-    <Router>
-      <div className="App" style={{backgroundColor: themeColor}}>
+    // <Router>
+    //   <Routes>
+    //     <Route path='/' element={<Layout />}>
+    //       <Route index element={<Article />} />
+    //     </Route>
+    //   </Routes>
+    // </Router>
+    <div className='App'>
         <Header />
-        
-
-        <div className='right-side-container'>
-
-          <div className='theme-selector' style={{borderColor: themeColor}}>
-            <ColorChange />
-          </div>
-
-          <div className="about" style={{borderColor: themeColor}}>
-            <About />
-          </div>
-
-          <div className='rules'>
-            <Rules />
-          </div>
-        </div>
+      <RightSide />
+      <div className='articles'>
+        {
+          (articles != null) ? articles.map((article, index) => <Article key={index} article={article.data} />) : ''
+        }
       </div>
-    </Router>
+    </div>
   )
 }
     
-export default App
+export default App;
