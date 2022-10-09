@@ -19,12 +19,74 @@ header div {
   display: inline;
 }
 
+header input {
+  display: inline-block;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: italic;
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  border: none;
+  appearance: none;
+}
+
+header h1:before {
+  content: 'r/';
+  display: inline-block;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+header ul {
+  align-self: center;
+  list-style-type: none;
+  text-align: center;
+}
+header ul li {
+  display: inline;
+  padding: 1rem;
+}
+header ul a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
 body {
   margin: 0;
   /* display: flex; */
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 75%;
+}
+.articles article {
+  padding: 2rem 1rem;
+}
+.articles article a {
+  text-decoration: none;
+}
+.articles article h3 {
+  color: white;
+}
+.articles article:nth-child(2n) {
+  background-color: #303030;
+}
+
+.articles article:hover {
+  background-color: blueviolet;
 }
 
 @media (prefers-color-scheme: light) {

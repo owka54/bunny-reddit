@@ -1,88 +1,58 @@
 import './App.css'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectTheme } from './features/colorChange/colorChangeSlice'
-import { fetchBunnyData, selectPosts, selectUrl } from './features/posts/postSourceSlice'
 
 import Header from './components/header'
+import RightSide from './components/rightSide'
 import ColorChange from './features/colorChange/colorChange'
 import About from './components/about'
 import Rules from './components/rules'
-import PostBoxContainer from './features/posts/postBoxContainer'
-import PostContainer from './features/posts/postContainer'
-import Loading from './features/loading/loading'
-import LoadFail from './features/loading/loadFail'
-import PostBox from './features/posts/postBox'
+import Layout from './components/layout'
+
+import Article from './components/Article'
 
 
 function App() {
   const dispatch = useDispatch()
-  const url = useSelector(selectUrl)
-  const data = useSelector(selectPosts)
 
-  const status = useSelector(state => state.source.status)
-  const error = useSelector(state => state.source.error)
-
-  const themeColor = useSelector(selectTheme)
+  const [articles, setArticles] = useState();
+  const [subreddit, setSubreddit] = useState('rabbits');
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchBunnyData(url))
-    }
-  }, [status, dispatch, url])
+    fetch('https://www.reddit.com/r/rabbits.json').then(res => {
+      if (res.status != 200) {
+        console.log('ERROR');
+        return;
+      }
 
-  let content
-  let postContent
+      res.json().then(data => {
+        if (data != null) {
+          setArticles(data.data.children);
+        }
+      })
 
-
-  if (status === 'loading') {
-    content = (<Loading />)
-  } else if (status === 'succeeded') {
-    content = (<PostBoxContainer data={data} error={error} status={status} comments='hide' />)
-    // console.log(data.data.children)
-    postContent = (<PostContainer data={data} error={error} status={status} comments='display' />)
-  } else if (status === 'failed') {
-    content = (<LoadFail />)
-  }
+    })
+  }, [subreddit])
 
   return (
-    <Router>
-      <div className="App" style={{backgroundColor: themeColor}}>
+    // <Router>
+    //   <Routes>
+    //     <Route path='/' element={<Layout />}>
+    //       <Route index element={<Article />} />
+    //     </Route>
+    //   </Routes>
+    // </Router>
+    <div className='App'>
         <Header />
+      <RightSide />
+      <div className='articles'>
+        {
+          (articles != null) ? articles.map((article, index) => <Article key={index} article={article.data} />) : ''
+        }
       </div>
-
-      {console.log({content})}
-
-
-
-      <div className='right-side-container'>
-        <div className='theme-selector' style={{borderColor: themeColor}}>
-          <ColorChange />
-        </div>
-        <div className="about" style={{borderColor: themeColor}}>
-          <About />
-        </div>
-        <div className='rules' style={{borderColor: themeColor}}>
-          <Rules />
-        </div>
-      </div>
-
-
-      <Routes>
-        <Route exact path='/' element={
-          <React.Fragment>{content}</React.Fragment>
-        } />
-
-        <Route exact path='/:postId' render={() => (
-          <React.Fragment>{postContent}</React.Fragment>
-        )} />
-        {/* <Navigate to='/' /> */}
-      </Routes>
-
-
-    </Router>
+    </div>
   )
 }
     
-export default App
+export default App;
