@@ -68,12 +68,14 @@ body {
 
 .articles {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   float: left;
   width: 75%;
 }
 .articles article {
   padding: 2rem 1rem;
+  max-width: 20rem;
 }
 .articles article a {
   text-decoration: none;
@@ -81,12 +83,16 @@ body {
 .articles article h3 {
   color: white;
 }
+.articles article img {
+  min-width: 20rem;
+  max-width: 20rem;
+}
 .articles article:nth-child(2n) {
   background-color: #303030;
 }
 
 .articles article:hover {
-  background-color: blueviolet;
+  background-color: #464646;
 }
 
 @media (prefers-color-scheme: light) {

@@ -5,22 +5,25 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Header from './components/header'
 import RightSide from './components/rightSide'
+import Filters from './features/filters/filters'
 import ColorChange from './features/colorChange/colorChange'
 import About from './components/about'
 import Rules from './components/rules'
 import Layout from './components/layout'
 
 import Article from './components/Article'
+import { filterChanged, selectURL } from './features/filters/filtersSlice'
 
 
 function App() {
   const dispatch = useDispatch()
 
   const [articles, setArticles] = useState();
-  const [subreddit, setSubreddit] = useState('rabbits');
+  const url = useSelector(selectURL);
+  console.log(url)
 
   useEffect(() => {
-    fetch('https://www.reddit.com/r/rabbits.json').then(res => {
+    fetch(url).then(res => {
       if (res.status != 200) {
         console.log('ERROR');
         return;
@@ -33,7 +36,7 @@ function App() {
       })
 
     })
-  }, [subreddit])
+  }, [url])
 
   return (
     // <Router>
@@ -46,6 +49,7 @@ function App() {
     <div className='App'>
         <Header />
       <RightSide />
+      <Filters />
       <div className='articles'>
         {
           (articles != null) ? articles.map((article, index) => <Article key={index} article={article.data} />) : ''

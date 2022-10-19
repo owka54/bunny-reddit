@@ -1,7 +1,11 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+import { selectTheme } from "../features/colorChange/colorChangeSlice";
+
 function Article(props) {
-    console.log(props)
+    const theme = useSelector(selectTheme);
+
     return (
         <article>
             <a href={'https://reddit.com' + props.article.permalink } target='_blank'>
